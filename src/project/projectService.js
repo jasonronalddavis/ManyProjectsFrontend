@@ -1,9 +1,11 @@
-class ProjectService{
+class ProjectService
 
+                        {
+
+    
 constructor(endpoint){
 this.endpoint = endpoint
         }
-
 
 
 
@@ -17,20 +19,22 @@ fetch(`${this.endpoint}/projects`)
         c.slapOnDom()
     }
 })
-    }
 
 
 
 
-createProject(){
-    const project = {
-        name: document.getElementById('name').value.
-        category:
-        ingredient:
-        description:
-        price_range:
-        }
-    }
+ createProject(){
+     const project = {
+         name: document.getElementById('name').value,
+         category: document.getElementById('name').value,
+         ingredient: document.getElementById('name').value,
+         ingredient: document.getElementById('name').value,
+         ingredient: document.getElementById('name').value,
+         description: document.getElementById('name').value,
+         price_range: document.getElementById('name').value
+         }
+         debugger;
+     }
 
 
 

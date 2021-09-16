@@ -22,8 +22,7 @@ Project.renderForm()
 
 
 function handleSubmit(){
-
- 
+    projectService.createProject()
 }
 
 

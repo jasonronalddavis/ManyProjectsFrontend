@@ -29,7 +29,7 @@ Project.all.push(this)
 
 
 
-categoryHTML(){
+projectHTML(){
     this.element.innerHTML += `
     <div>
     <h1>${this.name}</h1>
@@ -40,17 +40,40 @@ categoryHTML(){
 
 
 slapOnDom(){
-    Project.projectContainer.appendChild(this.categoryHTML())
+    Project.projectContainer.appendChild(this.projectHTML())
     }
     
 static renderForm(){
  Project.projectForm.innerHTML += `
 <form id="new-project-form">
-    Name: <input type="text" id="name">
-    Ingredients: <input type="text" id="ingredient">
-    Category: <input type="text" id="category"><br>
-    Description: <input type="text" id="description">
-    Price Range: <input type="text" id="price_range">
+    Name: <input type="text" id="name"><br>
+    Choose At Least 3 ingredients...<br>
+    Ingredient 1: name: <input type="text" id="ingredient">
+    product url: <input type="text" id="ingredient">
+    product price: <input type="text" id="ingredient"><br>
+    Ingredient 2: name: <input type="text" id="ingredient">
+    product url: <input type="text" id="ingredient">
+    product price: <input type="text" id="ingredient"><br>
+    Ingredient 3: name: <input type="text" id="ingredient">
+    product url: <input type="text" id="ingredient">
+    product price: <input type="text" id="ingredient"><br>
+    Categories:<br>
+     <input type="checkbox" id="category" name="art" value="art">
+    <label for="category"> Art </label><br>
+     <input type="checkbox" id="category" name="mechanics" value="mechanics">
+    <label for="category"> Mechanics </label><br>
+     <input type="checkbox" id="category" name="software" value="software">
+    <label for="category"> Software </label><br>
+     <input type="checkbox" id="category" name="nature" value="nature">
+    <label for="category"> Nature</label><br>
+    <input type="checkbox" id="category" name="politics" value="politics">
+    <label for="category"> Politics</label><br>
+     <input type="checkbox" id="category" name="social" value="social">
+    <label for="category"> Social</label><br>
+     <input type="checkbox" id="category" name="economics" value="economics">
+    <label for="category"> Economics</label><br>
+    Description: <textarea id="description"></textarea><br><br>
+    Tolal Estimated Cost: <input type="text" id="price_range"><br>
     <input type="submit" id="create"
 <form>
    `
