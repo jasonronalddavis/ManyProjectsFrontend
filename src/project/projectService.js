@@ -1,14 +1,10 @@
 class ProjectService
 
                         {
-
     
 constructor(endpoint){
 this.endpoint = endpoint
         }
-
-
-
 // 1: Read/Index action
 getProjects(){
 fetch(`${this.endpoint}/projects`)
@@ -19,25 +15,34 @@ fetch(`${this.endpoint}/projects`)
         c.slapOnDom()
     }
 })
-
-
+}
 
 
  createProject(){
      const project = {
          name: document.getElementById('name').value,
-         category: document.getElementById('name').value,
-         ingredient: document.getElementById('name').value,
-         ingredient: document.getElementById('name').value,
-         ingredient: document.getElementById('name').value,
-         description: document.getElementById('name').value,
-         price_range: document.getElementById('name').value
+         category: document.getElementById('category').value,
+         ingredient: document.getElementById('ingredient').value,
+         ingredient: document.getElementById('ingredient').value,
+         ingredient: document.getElementById('ingredient').value,
+         description: document.getElementById('description').value,
+         price_range: document.getElementById('price_range').value
+       
          }
-         debugger;
-     }
 
-
+const configObj = {
+method: 'POST',
+headers: {
+    'Content-Type': 'application/json'
+    },
+body: JSON.stringify(project)
 
 }
 
+fetch(`${this.endpoint}/projects`, congfigObj)
+.then(resp => resp.json())
+.then(project => {
+console.log(project)
+})
+    }
 }

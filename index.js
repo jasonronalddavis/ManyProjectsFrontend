@@ -15,13 +15,17 @@
 
 const base_url = "http://localhost:3000/api/v1"
 const categoryService = new CategoryService(base_url)
+const projectService = new ProjectService(base_url)
+
 
 Project.projectForm.addEventListener('submit', handleSubmit)
 categoryService.getCategories()
+projectService.getProjects()
 Project.renderForm()
 
 
 function handleSubmit(){
+    debugger;
     projectService.createProject()
 }
 
