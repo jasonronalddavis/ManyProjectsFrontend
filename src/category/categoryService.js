@@ -19,3 +19,6 @@ fetch(`${this.endpoint}/categories`)
 })
     }
 }
+
+
+

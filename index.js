@@ -20,15 +20,14 @@ const projectService = new ProjectService(base_url)
 
 Project.projectForm.addEventListener('submit', handleSubmit)
 categoryService.getCategories()
+
 projectService.getProjects()
 Project.renderForm()
-
 
 function handleSubmit(){
     debugger;
     projectService.createProject()
 }
-
 
 
 // document.addEventListener('DOMContentLoaded', () => {

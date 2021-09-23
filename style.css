@@ -1,0 +1,28 @@
+
+
+#category-assests li {   
+position:relative; top:450px; right:-250px; 
+width: 100px; z-index: -10px;
+    }
+
+
+ #category-assests img  {   
+        position:relative;
+        width: 100px; z-index: -10px;
+            }
+        
+
+
+
+#projects-container { 
+    
+    position:relative; right:-700px;  top: 200px; 
+    color: rgb(46, 48, 69);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: lighter;
+    line-height: 10pt;
+    top: 600;
+    
+}
+
+
