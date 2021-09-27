@@ -12,10 +12,11 @@
 // 
 
 
-
 const base_url = "http://localhost:3000/api/v1"
 const categoryService = new CategoryService(base_url)
 const projectService = new ProjectService(base_url)
+const deleteBttn = document.querySelector("deleteProject")
+  
 
 
 Project.projectForm.addEventListener('submit', handleSubmit)
@@ -25,9 +26,10 @@ projectService.getProjects()
 Project.renderForm()
 
 function handleSubmit(){
-    debugger;
+  
     projectService.createProject()
 }
+
 
 
 // document.addEventListener('DOMContentLoaded', () => {
@@ -53,3 +55,7 @@ function handleSubmit(){
 //      }) 
    
 //     }
+
+
+
+

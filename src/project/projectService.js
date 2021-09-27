@@ -1,7 +1,8 @@
 class ProjectService
 
                         {
-    
+
+ 
 constructor(endpoint){
 this.endpoint = endpoint
         }
@@ -17,17 +18,28 @@ fetch(`${this.endpoint}/projects`)
 })
 }
 
+deleteProject(){ 
+    let projectId = parseInt(event.target.id);  
+   let project = Project.all.find(x => x.id === projectId);
+   debugger;
+Project.all.filter(projectId)
+}
+
+//Project.all.filter(project => project !== project)
+
 
  createProject(){
     
      const project = {
          name: document.getElementById('name').value,
          description: document.getElementById('description').value,
-         price_range: document.getElementById('total_price').value,
+         total_price: document.getElementById('total_price').value,
        
          }
 
-
+         
+       
+         
 
 const configObj = {
 method: 'POST',
@@ -39,10 +51,26 @@ body: JSON.stringify(project)
 }
 
 
+
+
+
 fetch(`${this.endpoint}/projects`, configObj)
 .then(resp => resp.json())
 .then(project => {
 console.log(project)
 })
     }
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
