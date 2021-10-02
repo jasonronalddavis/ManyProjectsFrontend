@@ -13,23 +13,37 @@
 
 
 const base_url = "http://localhost:3000/api/v1"
+const ingredientService = new IngredientService(base_url)
 const categoryService = new CategoryService(base_url)
 const projectService = new ProjectService(base_url)
 const deleteBttn = document.querySelector("deleteProject")
-  
 
 
-Project.projectForm.addEventListener('submit', handleSubmit)
+Ingredient.ingredientForm.addEventListener('submit', submitIngredient)
+Project.projectForm.addEventListener('submit', submitProject)
+
 categoryService.getCategories()
-
+ingredientService.getIngredients()
 projectService.getProjects()
-Project.renderForm()
 
-function handleSubmit(){
-  
-    projectService.createProject()
+
+
+Project.renderCategories()
+Ingredient.renderCategories()
+
+Project.renderForm()
+Ingredient.renderForm()
+
+
+
+function submitIngredient(){
+    ingredientService.createIngredient()
 }
 
+function submitProject(){
+    event.preventDefault
+    projectService.createProject()
+}
 
 
 // document.addEventListener('DOMContentLoaded', () => {

@@ -10,7 +10,6 @@ static all = []
 static categoryContainer = document.getElementById("category-container")
 static art = document.getElementById("art")
 
-
 constructor({id, name, project_id, user_id, ingredient_id, image_url}){
 this.id = id
 this.name = name
@@ -26,6 +25,7 @@ Category.all.push(this)
 
 
 }
+
 
 
 

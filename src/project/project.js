@@ -10,16 +10,17 @@ static projectForm = document.getElementById('form-container')
 
 
 
-
-constructor({id, name, description, total_price}){
+constructor({id, name, description, total_price, ingredient_id, category_id}){
 this.id = id
 this.name = name
 this.description = description
 this.total_price = total_price
+this.ingredient_id = ingredient_id
+this.category_id = category_id
 this.element = document.createElement('li')
 this.element.dataset.id = this.id
 this.element.id = `project-${this.id}`
-this.element.addEventListener('click', this.handleClick)
+this.element.addEventListener('click', this.appendDelete)
 Project.all.push(this)
 
 }
@@ -44,6 +45,20 @@ projectHTML(){
     }
 
 
+    static renderCategories(){
+        const categories = Category.all
+        categories.forEach(function(i){   
+       Project.projectForm.innerHTML += `
+        <input type="checkbox"  ${i.name} id=${i.id} value=${i.id}>
+          ${i.name}
+          `
+   
+        })
+    }
+
+
+
+
     
 static renderForm(){
  Project.projectForm.innerHTML += `
@@ -56,15 +71,26 @@ static renderForm(){
    `
    }
 
+ static findProject() {
+    const projectId = parseInt(event.target.id); 
+    const project = Project.all.find(x => x.id === projectId);
+    return project.id
+}
 
-handleClick = () => { 
+
+appendDelete = () => { 
     if (event.target.innerText === 'Delete'){
-        projectService.deleteProject(this.id)
+       const element = document.querySelector(`#${this.element.id}`)
+        element.remove()
+        projectService.backEndDelete(this.id)
     }
 }
 
 
 
+}
+
+
     
 
-}
+
