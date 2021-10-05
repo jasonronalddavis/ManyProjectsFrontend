@@ -10,17 +10,19 @@ static ingredientForm = document.getElementById('ingredient-form-container')
 
 
 
-constructor({id, name, description, price, category_id}){
-this.id = id
-this.name = name
-this.description = description
-this.price = price
-this.category_id = category_id
-this.element = document.createElement('li')
-this.element.dataset.id = this.id
-this.element.id = `ingredient-${this.id}`
-this.element.addEventListener('click', this.appendDelete)
-Ingredient.all.push(this)
+constructor({id, name, description, price, url}){
+    this.id = id
+    this.name = name
+    this.description = description
+    this.price = price
+    this.url = url
+    
+    this.element = document.createElement('li')
+    this.element.dataset.id = this.id
+    this.element.id = `ingredient-${this.id}`
+    this.element.addEventListener('click', this.appendDelete)
+    Ingredient.all.push(this)
+
 
 }
 
@@ -75,11 +77,6 @@ static renderForm(){
    ` 
    }
 
- static findProject() {
-    let ingredientId = parseInt(event.target.id); 
-    let ingredient = Ingredient.all.find(x => x.id === ingredientId);
-    return ingredient.id
-}
 
 
 appendDelete = () => { 
@@ -94,11 +91,15 @@ static deleteIngredient = (id) => {
     let ingredientId = parseInt(event.target.id);  
    let ingredient = Ingredient.all.find(x => x.id === ingredientId);
 Ingredient.all.filter((ingredient) => id !== ingredient.id);
- //debugger;
+
+
+}
+
+
+
 
 }
 
 
 
 
-}

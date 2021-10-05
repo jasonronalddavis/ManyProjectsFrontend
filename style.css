@@ -10,10 +10,23 @@
 
 
 
+
+
+#edit-project-form{
+    position:absolute; right:40%; top: 50%; 
+    color: rgb(46, 48, 69);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: lighter;
+    line-height: 20pt;
+    z-index: -10px;
+}
+
+
+
 #category-container {   
     
     font-family: "Open Sans", sans-serif;
-      display: flex;
+    display: flex;
     position:absolute; top:25%; right:20%;
     justify-content: space-evenly; width: 50%;
 
@@ -55,7 +68,7 @@
 
 #projects-container { 
     
-    position:relative; right:-10%;  top: 200px; 
+    position:absolute; left:20;  top: 400px; 
     color: rgb(46, 48, 69);
     font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
     font-weight: lighter;

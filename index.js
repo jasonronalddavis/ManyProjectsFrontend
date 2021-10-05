@@ -26,24 +26,29 @@ categoryService.getCategories()
 ingredientService.getIngredients()
 projectService.getProjects()
 
-
-
 Project.renderCategories()
-Ingredient.renderCategories()
-
 Project.renderForm()
+Project.renderEditForm()
+
+Project.renderIngredients()
+
+Ingredient.renderCategories()
 Ingredient.renderForm()
 
 
 
 function submitIngredient(){
     ingredientService.createIngredient()
+  
+
+
 }
 
 function submitProject(){
     event.preventDefault
     projectService.createProject()
 }
+
 
 
 // document.addEventListener('DOMContentLoaded', () => {

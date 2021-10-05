@@ -26,13 +26,14 @@ fetch(`${this.endpoint}/ingredients`)
     
      const ingredient = {
          name: document.getElementById('name').value,
-        image_url: document.getElementById('image_url').value,
          description: document.getElementById('description').value,
-         price: document.getElementById('price').value,
-       
+         price: document.getElementById('price').value,     
+         url: document.getElementById('url').value 
          }
 
-         
+
+         console.log(ingredient)
+       
        
          
 
@@ -58,6 +59,4 @@ console.log(ingredient)
  
 
 }
-
-
 

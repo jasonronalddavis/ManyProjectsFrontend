@@ -20,5 +20,3 @@ fetch(`${this.endpoint}/categories`)
     }
 }
 
-
-

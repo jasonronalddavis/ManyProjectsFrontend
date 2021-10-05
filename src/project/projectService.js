@@ -19,14 +19,13 @@ fetch(`${this.endpoint}/projects`)
 }
 
  createProject(){
-    
      const project = {
          name: document.getElementById('name').value,
          description: document.getElementById('description').value,
          total_price: document.getElementById('total_price').value,
-       
+        
          }
- 
+
 
 const configObj = {
 method: 'POST',
@@ -46,8 +45,24 @@ console.log(project)
 
 
 
+
+
+
+
+
+//  backEndEdit(id){
+//         debugger;
+//         fetch(`${this.endpoint}/projects/${id}`,{
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json'
+//   body: JSON.stringify(project)
+//     })
+
+//     }
+
+
     backEndDelete(id){
-        debugger;
         fetch(`${this.endpoint}/projects/${id}`, {
         method: 'DELETE',
         headers: {
@@ -60,10 +75,4 @@ console.log(project)
     
 
 
-
-
 }
-
-
-
-
