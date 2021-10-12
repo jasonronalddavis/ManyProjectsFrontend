@@ -14,9 +14,10 @@ fetch(`${this.endpoint}/categories`)
 .then(categories => {
     for (const category of categories ){
         const c = new Category(category)
-        c.slapOnDom()
-    }
+        c.slapOnDom()    
+    }    
 })
     }
 }
+
 

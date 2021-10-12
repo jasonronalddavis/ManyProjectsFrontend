@@ -13,9 +13,14 @@ fetch(`${this.endpoint}/ingredients`)
 .then(ingredients => {
     for (const ingredient of ingredients ){
         const i = new Ingredient(ingredient)
-        i.slapOnDom()
+        i.slapOnDom()      
     }
+
+    Project.renderIngredients()
+
 })
+
+
 }
 
 
@@ -23,10 +28,9 @@ fetch(`${this.endpoint}/ingredients`)
 
 
  createIngredient(){
-    
      const ingredient = {
-         name: document.getElementById('name').value,
-         description: document.getElementById('description').value,
+         name: document.getElementById('ingredient-name').value,
+         description: document.getElementById('ingredient-description').value,
          price: document.getElementById('price').value,     
          url: document.getElementById('url').value 
          }

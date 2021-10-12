@@ -16,12 +16,13 @@ constructor({id, name, description, price, url}){
     this.description = description
     this.price = price
     this.url = url
-    
+
     this.element = document.createElement('li')
     this.element.dataset.id = this.id
     this.element.id = `ingredient-${this.id}`
     this.element.addEventListener('click', this.appendDelete)
     Ingredient.all.push(this)
+//debugger;
 
 
 }
@@ -48,20 +49,18 @@ ingredientHTML(){
 
 
 
-    static renderCategories(){
+    static renderCategories(){  
+        
         const categories = Category.all
+        Ingredient.ingredientForm.innerHTML += `<h3> Select at Least one Category: </h3>`
         categories.forEach(function(i){   
-        
-          Ingredient.ingredientForm.innerHTML += `
-        <input type="checkbox"  ${i.name} id=${i.id} value=${i.id}>
+       Ingredient.ingredientForm.innerHTML += `<div id=ing-cat-content value=${i.name}>
+        <input type="checkbox" ${i.name} id=${i.id} value=${i.name}>
           ${i.name}
-
-          
+          </div>
           `
-        
-            })
-      }
-
+        })    
+    }
 
 
 
@@ -69,8 +68,8 @@ ingredientHTML(){
 static renderForm(){
  Ingredient.ingredientForm.innerHTML += `
 <form id="new-ingredient-form">
-    Name: <input type="text" id="name"><br>
-    Description: <textarea id="description"></textarea><br><br>
+    Name: <input type="text" id="ingredient-name"><br>
+    Description: <textarea id="ingredient-description"></textarea><br><br>
     Price: <input type="number" step="any" id="price"><br>
     <input type="submit" id="create">
 <form>
@@ -99,7 +98,6 @@ Ingredient.all.filter((ingredient) => id !== ingredient.id);
 
 
 }
-
 
 
 

@@ -13,16 +13,17 @@ static editProjectForm = document.getElementById('edit-project-form')
 
 static all = []
 
-//static ingredient_ids = []
-//static category_ids =  []
+static ingredients = []
+static categories = []
 
 
-constructor({id, name, description, total_price, category_ids}){
+constructor({id, name, description, total_price, ingredient_id, category_id}){
 this.id = id
 this.name = name
 this.description = description
 this.total_price = total_price
-this .category_ids = category_ids
+this.ingredient_id = ingredient_id
+this.category_id = category_id
 this.element = document.createElement('li')
 this.element.dataset.id = this.id
 this.element.id = `project-${this.id}`
@@ -49,45 +50,8 @@ projectHTML(){
    slapOnDom(){
     console.log()
     Project.projectContainer.append(this.projectHTML())
-   
     }
     
-
-
-
-static projectBoxScroll(){
-   
-
-
-let projectBox = document.createElement(`img`)
-projectBox.src = "assets/images/pbox1.png" 
-projectBox.id = "pboxes"
-
-let newImage = projectBox.src
-  let scrollTop = document.documentElement.scrollTop;
-if (scrollTop > 125) {  
-   projectBox.src = "assets/images/pbox1.png"  
-     console.log(scrollTop);
-    
-  }
-  if (scrollTop > 250) {
-    projectBox.src = "assets/images/pbox2.png"
-     console.log(scrollTop);
-  }
-  if (scrollTop > 375) {
-     projectBox.src = "assets/images/pbox3.png"
-     console.log(scrollTop);
-  }
-if (scrollTop > 500){
-projectBox.src + "assets/images/pbox4.png" 
-console.log(scrollTop);
-}
-  projectBox.src = newImage
-Project.projectContainer.append(projectBox)
-document.addEventListener ("scroll", Project.projectBoxScroll);
-}
-
-
 
   
 
@@ -98,7 +62,7 @@ document.addEventListener ("scroll", Project.projectBoxScroll);
         console.log(ingredients)   
         Project.projectForm.innerHTML += `<br><select id="ingredient-select">`
         ingredients.forEach(function(i){   
-            document.querySelector("#ingredient-select").innerHTML += `<option ${i.name} id=${i.id} value=${i.id}>
+            document.querySelector("#ingredient-select").innerHTML += `<option ${i.name} id=${i.id} value=${i.name}>
                 ${i.name}
                 </option> `
     
@@ -114,8 +78,8 @@ document.addEventListener ("scroll", Project.projectBoxScroll);
             const categories = Category.all
             Project.projectForm.innerHTML += `<h3> Select at Least one Category: </h3>`
             categories.forEach(function(i){   
-           Project.projectForm.innerHTML += `<div id=cat-content >
-            <input type="checkbox" id=${i.id} value=${i.id}>
+           Project.projectForm.innerHTML += `<div id=cat-content value=${i.name}>
+            <input type="checkbox" ${i.name} id=${i.id} value=${i.name}>
               ${i.name}
               </div>
               `
@@ -124,7 +88,11 @@ document.addEventListener ("scroll", Project.projectBoxScroll);
     
 
 
-
+        static findProject(event) {
+            const projectId = parseInt(event.target.id); 
+              const project = Project.all.find(x => x.id === projectId);
+              return project
+          }
 
 
   
@@ -141,31 +109,19 @@ static renderForm(){
 
 
 static renderEditForm(){
-if(this){
-
-
-
-Project.editProjectForm.innerHTML += `
-<h2> Edit Project </h2>
+    Project.editProjectForm.innerHTML += `
+    <h2> Edit Project </h2>
     
     `
-
  Project.editProjectForm.innerHTML += `
 <form id="new-project-form"><br>
-    Name: <input type="text" id="edit-project-name" placeholder=${this.name}><br><br>
+    Name: <input type="text" id="edit-project-name"><br><br>
     Description: <textarea id="edit-project-description"></textarea><br><br>
     Tolal Estimated Cost: <input type="number" step="any" id="edit-total_price"><br>
     <input type="submit" id="create">
 <form>
    `
    }
-
-
-
-
-}
-
-
 
 
 
@@ -179,9 +135,7 @@ Project.editProjectForm.innerHTML += `
  static findProject() {
   const projectId = parseInt(event.target.id); 
     const project = Project.all.find(x => x.id === projectId);
-    console.log(project)
     return project
-    
 }
 
 
@@ -190,9 +144,7 @@ appendEdit = () => {
 
     if (event.target.innerText === 'Edit'){
        const element = document.querySelector(`#${this.element.id}`)
-       
     }
-    
     if (Project.editProjectForm.style.display === 'none'){
         Project.editProjectForm.style.display = "block";
     }else{

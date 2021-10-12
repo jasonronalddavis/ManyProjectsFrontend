@@ -1,4 +1,22 @@
 
+
+#background img{
+    
+    position:absolute; top:-20%; right:-30%; z-index: -15;
+    width: 140%
+
+
+}
+
+
+
+
+
+
+
+
+
+
 #ingredient-form-container{
 
     position:absolute; right:0%; top: 0%; 
@@ -59,10 +77,15 @@
  #category-assests img  {   
     display: flex;
         position:relative;
-        width: 100px; z-index: -10px;
+        width: 90px; z-index: -10px;
         justify-content: space-evenly;
             }
         
+
+
+
+
+
 
 
 
