@@ -21,6 +21,10 @@ const deleteBttn = document.querySelector("deleteProject")
 
 Ingredient.ingredientForm.addEventListener('submit', submitIngredient)
 Project.projectForm.addEventListener('submit', submitProject)
+Project.editProjectForm.addEventListener('submit', updateProject)
+
+
+
 
 categoryService.getCategories()
 ingredientService.getIngredients()
@@ -30,14 +34,18 @@ projectService.getProjects()
 
 
 
+function showProject(){
+    event.preventDefault()
+    projectService.showProject()
 
-Ingredient.renderCategories()
-Ingredient.renderForm()
+}
 
 
 
 function submitIngredient(){
+    event.preventDefault()
     ingredientService.createIngredient()
+
 }
 
 function submitProject(event){
@@ -45,6 +53,11 @@ function submitProject(event){
     projectService.createProject()
 }
 
+function updateProject(event){
+event.preventDefault()
+projectService.backEndedit()
+
+}
 
 
 
@@ -52,9 +65,8 @@ function submitProject(event){
 
 
 
-
- document.addEventListener('DOMContentLoaded', () => {
-     Project.projectBoxScroll()
+document.addEventListener('DOMContentLoaded', () => {
+     Project.scrollAble()
 })
 
 
@@ -76,6 +88,8 @@ function submitProject(event){
 //      }) 
    
 //     }
+
+
 
 
 

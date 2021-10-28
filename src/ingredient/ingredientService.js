@@ -1,8 +1,6 @@
 class IngredientService
                   {
-
                
-    
 constructor(endpoint){
 this.endpoint = endpoint
         }
@@ -16,11 +14,11 @@ fetch(`${this.endpoint}/ingredients`)
         i.slapOnDom()      
     }
 
-    Project.renderIngredients()
+  Project.renderIngredients()
+    
+  
 
 })
-
-
 }
 
 
@@ -28,18 +26,33 @@ fetch(`${this.endpoint}/ingredients`)
 
 
  createIngredient(){
+
+   const category_Ids = []
+    const iValues = document.querySelectorAll("input[type=checkbox]");
+    iValues.forEach(chbox => {
+        if (chbox.checked) {
+          category_Ids.push(chbox.value)
+        }
+      })
+
+
+
+  
      const ingredient = {
          name: document.getElementById('ingredient-name').value,
          description: document.getElementById('ingredient-description').value,
+        image_url: document.getElementById("image_url").value,
          price: document.getElementById('price').value,     
-         url: document.getElementById('url').value 
+         url: document.getElementById('url').value,
+         category_ids: category_Ids
          }
 
 
-         console.log(ingredient)
-       
-       
-         
+
+
+
+
+
 
 const configObj = {
 method: 'POST',
@@ -54,13 +67,34 @@ body: JSON.stringify(ingredient)
 
 
 
+
+
 fetch(`${this.endpoint}/ingredients`, configObj)
 .then(resp => resp.json())
-.then(ingredient => {
-console.log(ingredient)
+.then(project => {
+console.log(project)
 })
     }
- 
+
+
+
+
+
+
+
+
+
+    backEndDelete(id){
+        fetch(`${this.endpoint}/ingredients/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(resp => resp.json())
+    .then(json => alert(json.message))
+    }
+    
 
 }
 

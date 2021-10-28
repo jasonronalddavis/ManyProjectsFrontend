@@ -15,7 +15,9 @@ fetch(`${this.endpoint}/categories`)
     for (const category of categories ){
         const c = new Category(category)
         c.slapOnDom()    
-    }    
+    }   
+    
+
 })
     }
 }

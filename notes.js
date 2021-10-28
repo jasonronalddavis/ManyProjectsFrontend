@@ -36,3 +36,11 @@ static renderIngredients(){
     document.querySelector("#ingredient-select").innerHTML +=` </select>`
    
 }
+
+static findProject() {
+    const projectId = parseInt(event.target.id); 
+      const project = Project.all.find(x => x.id === projectId);
+      console.log(project)
+      return project
+      
+  }

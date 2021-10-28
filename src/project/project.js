@@ -10,34 +10,41 @@ class Project
 static projectContainer = document.getElementById("projects-container")
 static projectForm = document.getElementById('form-container')
 static editProjectForm = document.getElementById('edit-project-form')
-
+static projectBox = document.querySelector(`#p-box`);
 static all = []
+static background = document.querySelector(`#back-ground`);
+static ingredientBox = document.querySelector(`#i-box`);
+static ingredient_ids = []
+static category_ids =  []
+static showProject = document.getElementById("show-project")
 
-//static ingredient_ids = []
-//static category_ids =  []
 
-
-constructor({id, name, description, total_price, category_ids}){
+constructor({id, name, description, total_price, category_ids, ingredient_ids}){
 this.id = id
 this.name = name
 this.description = description
 this.total_price = total_price
 this .category_ids = category_ids
+this.ingredient_ids = ingredient_ids
 this.element = document.createElement('li')
 this.element.dataset.id = this.id
 this.element.id = `project-${this.id}`
 this.element.addEventListener('click', this.appendDelete)
 this.element.addEventListener('click', this.appendEdit)
+this.element.addEventListener('click', this.appendShow)
 Project.all.push(this)
 
 }
 
 
 
+//HTML RENDER
+
 projectHTML(){
     this.element.innerHTML += `
     <div>
     <h1>${this.name}</h1>
+    <button id=${this.id}class= btn-primary> Show</button>
     <button id=${this.id}>Delete</button>
     <button id=${this.id} class= btn-primary>Edit</button>
     </div>
@@ -49,83 +56,84 @@ projectHTML(){
    slapOnDom(){
     console.log()
     Project.projectContainer.append(this.projectHTML())
-   
     }
     
 
 
 
-static projectBoxScroll(){
-   
+ static scrollAble(){
+const scrollAmount = 0;
+
+const {top} =   Project.projectBox.getBoundingClientRect();
+
+const {backTop} =  Project.background.getBoundingClientRect();
 
 
-let projectBox = document.createElement(`img`)
-projectBox.src = "assets/images/pbox1.png" 
-projectBox.id = "pboxes"
-
-let newImage = projectBox.src
-  let scrollTop = document.documentElement.scrollTop;
-if (scrollTop > 125) {  
-   projectBox.src = "assets/images/pbox1.png"  
-     console.log(scrollTop);
+if (top  > 100 ) {  
+    Project.projectBox.src = "assets/images/pbox1.png";  
+    Project.ingredientBox.src = "assets/images/ingredientBox1.png";
+     Project.background.src = "assets/images/background3.png";
+  } 
+  if (top  > 200 ) {
+    Project.projectBox.src = "assets/images/pbox2.png";
+   Project.ingredientBox.src = "assets/images/ingredientBox2.png";
+    }
     
+     if (top  > 300  ) {
+    Project.projectBox.src = "assets/images/pbox3.png"; 
+ Project.ingredientBox.src = "assets/images/ingredientBox3.png";
   }
-  if (scrollTop > 250) {
-    projectBox.src = "assets/images/pbox2.png"
-     console.log(scrollTop);
-  }
-  if (scrollTop > 375) {
-     projectBox.src = "assets/images/pbox3.png"
-     console.log(scrollTop);
-  }
-if (scrollTop > 500){
-projectBox.src + "assets/images/pbox4.png" 
-console.log(scrollTop);
-}
-  projectBox.src = newImage
-Project.projectContainer.append(projectBox)
-document.addEventListener ("scroll", Project.projectBoxScroll);
-}
-
-
-
   
+ if (top  > 400  ) {
+    Project.projectBox.src = "assets/images/pbox4.png";
+    Project.ingredientBox.src = "assets/images/ingredientBox4.png";
+     Project.background.src = "assets/images/background1.png";
+  }
+ if (top  > 500 ){
+    Project.projectBox.src = "assets/images/pbox5.png"; 
+    Project.ingredientBox.src = "assets/images/ingredientBox4.png";
+}
+document.addEventListener ("scroll", Project.scrollAble);
+document.addEventListener ("scroll", Project.scrollAble);
+}
+
+
 
 
    static renderIngredients() {   
-       const ingredients = Ingredient.all
-       
-        console.log(ingredients)   
-        Project.projectForm.innerHTML += `<br><select id="ingredient-select">`
+       const ingredients = Ingredient.all  
+       Project.projectForm.innerHTML += `<h4> Select an Ingredient:  </h4>`
+        Project.projectForm.innerHTML += `<select id="ingredient-selectA">`
+        Project.projectForm.innerHTML += `<select id="ingredient-selectB">`
+        Project.projectForm.innerHTML += `<select id="ingredient-selectC">`
         ingredients.forEach(function(i){   
-            document.querySelector("#ingredient-select").innerHTML += `<option ${i.name} id=${i.id} value=${i.id}>
-                ${i.name}
-                </option> `
-    
-                document.querySelector("#ingredient-select").innerHTML +=` </select>`
-                
-            })
+        document.querySelector("#ingredient-selectA").innerHTML += `<option ${i.name} id=${i.name} value=${i.id}>
+            ${i.name}
+            </option>`
+            document.querySelector("#ingredient-selectB").innerHTML += `<option ${i.name} id=${i.name} value=${i.id}>
+            ${i.name}
+            </option>`
+            document.querySelector("#ingredient-selectC").innerHTML += `<option ${i.name} id=${i.name} value=${i.id}>
+            ${i.name}
+            </option>`        
+        })
         }
     
 
 
 
-        static renderCategories(){  
+        static renderCategories(){      
             const categories = Category.all
             Project.projectForm.innerHTML += `<h3> Select at Least one Category: </h3>`
             categories.forEach(function(i){   
-           Project.projectForm.innerHTML += `<div id=cat-content >
+           Project.projectForm.innerHTML += `<div id=cat-content>
             <input type="checkbox" id=${i.id} value=${i.id}>
               ${i.name}
               </div>
-              `
+              ` 
             })    
         }
     
-
-
-
-
 
   
 static renderForm(){
@@ -136,34 +144,33 @@ static renderForm(){
     Tolal Estimated Cost: <input type="number" step="any" id="total_price" value=""><br>
     <input type="submit" id="create">
 <form>
-   `
-   }
+   ` 
+}
 
 
-static renderEditForm(){
-if(this){
-
-
-
+ static renderEditForm(){
 Project.editProjectForm.innerHTML += `
-<h2> Edit Project </h2>
-    
+<h2> Edit Project </h2> 
     `
-
  Project.editProjectForm.innerHTML += `
-<form id="new-project-form"><br>
-    Name: <input type="text" id="edit-project-name" placeholder=${this.name}><br><br>
+<form id="edit-project-form"><br>
+    Name: <input type="text" id="edit-project-name" ><br><br>
     Description: <textarea id="edit-project-description"></textarea><br><br>
     Tolal Estimated Cost: <input type="number" step="any" id="edit-total_price"><br>
     <input type="submit" id="create">
 <form>
    `
+
    }
 
 
 
 
-}
+   static renderShow(){
+     Project.showProject.innerHTML += `
+     <img src="assets/images/Project_box.png" id="show-box">
+       `
+       }
 
 
 
@@ -172,35 +179,63 @@ Project.editProjectForm.innerHTML += `
 
 
 
+//APPEND
 
-
-
-
- static findProject() {
-  const projectId = parseInt(event.target.id); 
-    const project = Project.all.find(x => x.id === projectId);
-    console.log(project)
-    return project
-    
-}
 
 
 
 appendEdit = () => { 
-
     if (event.target.innerText === 'Edit'){
        const element = document.querySelector(`#${this.element.id}`)
-       
-    }
-    
+       const epf = document.querySelector(`#edit-project-form`);
+       document.getElementById('edit-project-name'). placeholder = `${this.name}`
+       document.getElementById('edit-project-description'). placeholder = `${this.description}`
+      let input = document.querySelector(`edit-project-form`)
+      input += `<label>id=${this.id}</label>`
+      Project.editProjectForm.dataset.id = this.id
+    }   
     if (Project.editProjectForm.style.display === 'none'){
         Project.editProjectForm.style.display = "block";
     }else{
         Project.editProjectForm.style.display = 'none';
+    } 
+    }
 
+
+
+    appendShow = () => { 
+
+        
+
+        if (event.target.innerText === 'Show'){
+            
+            Project.showProject.innerHTML = `
+            <h1 id='p-name-label'> Project Name: </h1>
+            <h1 id='show-project-name'> ${this.name} </h1>
+            <h1 id='p-des-label'> Project Description: </h1>
+            <p id='show-project-description'> ${this.description} </p>
+            <img src="assets/images/Project_box.png" id="show-box">
+            <h3 id='p-cat-label'> Project Categories: </h3>
+            <h3 id='p-ing-label'> Project Ingredients: </h3>
+            `
+            Project.showProject.dataset.id = this.id
+         if (Project.showProject.style.display === 'none'){
+             Project.showProject.style.display = "block";
+             projectService.renderShow(this.id); 
+          
+ 
+         }else{
+             Project.showProject.style.display = 'none';
+         } 
+      
+
+       
     }
-    
+
+  
     }
+
+
 
 
 appendDelete = () => { 
