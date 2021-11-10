@@ -157,14 +157,14 @@ const configObj = {
     }
 
 
-
-document.querySelector('#show-project').innerHTML += `<div id="sho-proj-cat"></div>`
-document.querySelector('#show-project').innerHTML += `<div id="sho-proj-ing"></div>`
-
+    
 
         fetch(`${this.endpoint}/projects/${id}`,configObj)     
         .then(resp => resp.json() )   
         .then(project => { 
+
+
+
         project.project_categories.forEach(function(i){ 
             document.querySelector('#sho-proj-cat').innerHTML  +=            
         ` <div id="show-p-cat">${i.name}</div>`
@@ -174,11 +174,11 @@ document.querySelector('#show-project').innerHTML += `<div id="sho-proj-ing"></d
             document.querySelector('#sho-proj-ing').innerHTML  +=            
         ` <div id="show-p-ing">${i.name}</div>`
             })         
-              
         })
 
-        
+
     }
+
 
 
 

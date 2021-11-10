@@ -205,11 +205,12 @@ appendEdit = () => {
 
     appendShow = () => { 
 
-        
+document.querySelector('#show-project').innerHTML += `<div id="sho-cont"></div>`
+const shoCont = document.querySelector('#sho-cont')
 
         if (event.target.innerText === 'Show'){
             
-            Project.showProject.innerHTML = `
+            shoCont.innerHTML = `
             <h1 id='p-name-label'> Project Name: </h1>
             <h1 id='show-project-name'> ${this.name} </h1>
             <h1 id='p-des-label'> Project Description: </h1>
@@ -231,7 +232,8 @@ appendEdit = () => {
 
        
     }
-
+    shoCont.innerHTML += `<div id="sho-proj-cat"></div>`
+    shoCont.innerHTML += `<div id="sho-proj-ing"></div>`
   
     }
 

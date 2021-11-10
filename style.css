@@ -3,8 +3,6 @@
 #background img {  
     position:absolute; top:-10%; right:0%; z-index: -20;
     width: 100%;
-   
-
 }
 
 #i-box {
@@ -29,6 +27,17 @@ height:60vh;
 left: 10%;
 }
 
+
+#show-project {
+    position:absolute; top: 450px; right: 0px; z-index: 30;
+
+    overflow-x: scroll; width: 100vw; height: 30vw;
+    overflow-x: hidden; 
+}
+
+
+
+
 #category-container{ 
     position:absolute; top: -600px; left: 20%; z-index: 40;
     padding: 20%;  
@@ -50,9 +59,7 @@ left: 10%;
     font-family: Futura, normal;
     display: flex;
     font-family: Futura, normal;
-   
 
-   
 }
 
 #cat-cont img { 
@@ -114,25 +121,25 @@ top: 45%;
 }
 
 #p-ing-label {
-    position: absolute; top: 55%;  right: 43%; z-index: 3;
+    position: absolute; top: 290px;  right: 43%; z-index: 4;
         font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
         color:rgb(242, 250, 255);
     }
     
   
-    #p-cat-label {
-        position: absolute; top: 64%;  right: 43%; z-index: 3;
+    #p-cat-label{
+        position: absolute; top: 353px;  right: 43%; z-index: 3;
             font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
             color:rgb(242, 250, 255);
         }
 
 
 #sho-proj-cat {
-    position:absolute; right:660px; top: 744px; z-index: 3; 
-    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; l
+    position:absolute; left:45%; top: 400px; z-index: 55; 
+    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; 
     line-height: 20px;
     color:rgb(0, 172, 199);
-    overflow-y: scroll; height: 30px; 
+    overflow-y: scroll; height: 20px; width: 150px;
  
 }
 
@@ -140,11 +147,11 @@ top: 45%;
 
 
 #sho-proj-ing {
-    position:absolute; right:660px; top: 645px; z-index: 3; 
-    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; l
+    position:relative; left:45%; top: 334px; z-index: 50; 
+    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; 
     line-height: 20px;
     color:rgb(0, 172, 199);
-    overflow-y: scroll; height: 30px; 
+    overflow-y: scroll; height: 20px; width: 150px;
  
 }
 
@@ -156,7 +163,7 @@ top: 45%;
 
 
 #p-name-label{
-    position:absolute; top: 47%; left:45.2%; z-index: 3;
+    position:absolute; top: 55%; left:44.5%; z-index: 3;
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 27px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
     margin-top: 10px; 
     margin-left: -30px;
@@ -171,7 +178,7 @@ top: 45%;
 }
 
 #show-project-name  {
-position:absolute; top: 51.5%; left:46%; z-index: 3;
+position:absolute; top: 63%; left:46%; z-index: 3;
 font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
 margin-top: 10px; 
 margin-left: -30px;
@@ -179,7 +186,7 @@ color:rgb(0, 172, 199);
 }
 
 #show-project-description  {
-    position:absolute; top:76%;  right:42.5%; z-index: 3;
+    position:absolute; top: 800px; left:43%; z-index: 52;
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 20px;
     color:rgb(0, 172, 199);
     overflow-y: scroll; height: 70px; 
@@ -190,7 +197,7 @@ color:rgb(0, 172, 199);
 
 
 #p-des-label {
-    position: absolute; top: 74%;  right: 44%; z-index: 3;
+    position: absolute; top: 751px;  right: 44%; z-index: 6;
         font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
         color:rgb(242, 250, 255);
     }
