@@ -38,10 +38,12 @@ Project.all.push(this)
 
 
 
+
 //HTML RENDER
 
 projectHTML(){
     this.element.innerHTML += `
+    
     <div>
     <h1>${this.name}</h1>
     <button id=${this.id}class= btn-primary> Show</button>
@@ -50,6 +52,8 @@ projectHTML(){
     </div>
     `
     return this.element
+
+     Project.projectContainer.scrollLeft(300);
 }
 
 
@@ -142,7 +146,7 @@ static renderForm(){
     Name: <input type="text" id="project-name"><br><br>
     Description: <textarea id="project-description"></textarea><br><br>
     Tolal Estimated Cost: <input type="number" step="any" id="total_price" value=""><br>
-    <input type="submit" id="create">
+    <input type="submit" id="create-project">
 <form>
    ` 
 }
@@ -150,14 +154,14 @@ static renderForm(){
 
  static renderEditForm(){
 Project.editProjectForm.innerHTML += `
-<h2> Edit Project </h2> 
+<h2 id="edit-project-title"> Edit Project </h2> 
     `
  Project.editProjectForm.innerHTML += `
 <form id="edit-project-form"><br>
     Name: <input type="text" id="edit-project-name" ><br><br>
     Description: <textarea id="edit-project-description"></textarea><br><br>
     Tolal Estimated Cost: <input type="number" step="any" id="edit-total_price"><br>
-    <input type="submit" id="create">
+    <input type="submit" id="create-edit">
 <form>
    `
 
@@ -190,6 +194,7 @@ appendEdit = () => {
        const epf = document.querySelector(`#edit-project-form`);
        document.getElementById('edit-project-name'). placeholder = `${this.name}`
        document.getElementById('edit-project-description'). placeholder = `${this.description}`
+        document.getElementById('edit-total_price'). placeholder = `${this.total_price}`
       let input = document.querySelector(`edit-project-form`)
       input += `<label>id=${this.id}</label>`
       Project.editProjectForm.dataset.id = this.id
@@ -205,19 +210,22 @@ appendEdit = () => {
 
     appendShow = () => { 
 
-document.querySelector('#show-project').innerHTML += `<div id="sho-cont"></div>`
+document.querySelector('#show-project').innerHTML = `<div id="sho-cont"></div>`
 const shoCont = document.querySelector('#sho-cont')
 
         if (event.target.innerText === 'Show'){
             
             shoCont.innerHTML = `
             <h1 id='p-name-label'> Project Name: </h1>
+            <h1 id='p-total-label'> Total Estimated Cost: </h1>
+           <h1 id='show-total-price'> ${this.total_price} </h1>
             <h1 id='show-project-name'> ${this.name} </h1>
             <h1 id='p-des-label'> Project Description: </h1>
             <p id='show-project-description'> ${this.description} </p>
             <img src="assets/images/Project_box.png" id="show-box">
             <h3 id='p-cat-label'> Project Categories: </h3>
             <h3 id='p-ing-label'> Project Ingredients: </h3>
+
             `
             Project.showProject.dataset.id = this.id
          if (Project.showProject.style.display === 'none'){

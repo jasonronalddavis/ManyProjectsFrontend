@@ -87,7 +87,7 @@ static renderForm(){
     Description: <textarea id="ingredient-description"></textarea><br><br>
     Image_url: <input type="text" id="image_url"><br><br>
     Price: <input type="number" step="any" id="price"><br>
-    <input type="submit" id="create">
+    <input type="submit" id="create-ingredient">
 <form>
    ` 
    }

@@ -146,8 +146,6 @@ const project = {
 }
 
 
-
-
 const configObj = {
     method: 'GET',
     headers: {
@@ -157,12 +155,10 @@ const configObj = {
     }
 
 
-    
 
         fetch(`${this.endpoint}/projects/${id}`,configObj)     
         .then(resp => resp.json() )   
         .then(project => { 
-
 
 
         project.project_categories.forEach(function(i){ 
@@ -175,17 +171,7 @@ const configObj = {
         ` <div id="show-p-ing">${i.name}</div>`
             })         
         })
-
-
     }
-
-
-
-
-
-
-
-
 
 
 

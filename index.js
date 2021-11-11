@@ -43,18 +43,18 @@ function showProject(){
 
 
 function submitIngredient(){
-    event.preventDefault()
+ 
     ingredientService.createIngredient()
 
 }
 
 function submitProject(event){
-    event.preventDefault()
+
     projectService.createProject()
 }
 
 function updateProject(event){
-event.preventDefault()
+
 projectService.backEndedit()
 
 }

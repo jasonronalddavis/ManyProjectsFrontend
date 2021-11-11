@@ -13,11 +13,24 @@
 
 
 #form-container {
-position: relative; z-index: 50;
+position: relative; z-index: 80;
 color: rgb(92, 202, 210);
-font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
+font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px; 
+width: 200px;
+}
 
-  
+
+#new-project-form{
+    position: relative; z-index: 50;
+}
+
+#create-project {
+    position: relative; top: 55px; z-index: 50;
+    
+}
+
+#ingredient-selectA{
+    position: relative; top:0px; z-index: 50;
 }
 
 #p-box{
@@ -30,25 +43,31 @@ left: 10%;
 
 #show-project {
     position:absolute; top: 450px; right: 0px; z-index: 30;
-
     overflow-x: scroll; width: 100vw; height: 30vw;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+ 
+ 
 }
 
 
 
 
 #category-container{ 
-    position:absolute; top: -600px; left: 20%; z-index: 40;
+    position:absolute; top: -650px; left: 30%; z-index: 40;
     padding: 20%;  
     display: flex;   width: 20%; 
     justify-content: space-evenly; width: 290px; 
     color: rgb(247, 87, 12);
     list-style-type: none; 
+  
 }
 
-
-
+#category-container{ 
+    position: absolute; z-index: 70;
+    overflow-y: hidden;
+    overflow-x: scroll; height: 12px; width: 70px;
+    padding-bottom: 191px;
+}
 
 
 
@@ -65,6 +84,7 @@ left: 10%;
 #cat-cont img { 
     position:relative; width: 50px; 
     justify-content: space-evenly; width: 40px; 
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -100,10 +120,22 @@ left: 10%;
 #edit-project-form{
     position:absolute; right:40%; top: 50%; 
     color: rgb(247, 87, 12);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; 
     font-weight: lighter;
     line-height: 20pt;
-    z-index: -10px;
+    z-index: 20;
+}
+
+
+
+
+#edit-project-title{
+    position:absolute; left:-180px; top: -60px; 
+    color: rgb(247, 87, 12);
+    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; 
+    font-weight: lighter;
+    line-height: 20pt;
+    z-index: -9px;
 }
 
 
@@ -121,25 +153,26 @@ top: 45%;
 }
 
 #p-ing-label {
-    position: absolute; top: 290px;  right: 43%; z-index: 4;
+    position: absolute; top: 290px;  right: 43%; z-index: 80;
         font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
         color:rgb(242, 250, 255);
     }
     
   
     #p-cat-label{
-        position: absolute; top: 353px;  right: 43%; z-index: 3;
+        position: absolute; top: 353px;  right: 43%; z-index: 80;
             font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
             color:rgb(242, 250, 255);
         }
 
 
 #sho-proj-cat {
-    position:absolute; left:45%; top: 400px; z-index: 55; 
+    position:absolute; left:45%; top: 400px; z-index: 80; 
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; 
     line-height: 20px;
     color:rgb(0, 172, 199);
     overflow-y: scroll; height: 20px; width: 150px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
  
 }
 
@@ -147,12 +180,12 @@ top: 45%;
 
 
 #sho-proj-ing {
-    position:relative; left:45%; top: 334px; z-index: 50; 
+    position:relative; left:45%; top: 334px; z-index: 80; 
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; 
     line-height: 20px;
     color:rgb(0, 172, 199);
     overflow-y: scroll; height: 20px; width: 150px;
- 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -163,7 +196,7 @@ top: 45%;
 
 
 #p-name-label{
-    position:absolute; top: 55%; left:44.5%; z-index: 3;
+    position:absolute; top: 55%; left:44.5%; z-index: 80;
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 27px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
     margin-top: 10px; 
     margin-left: -30px;
@@ -178,26 +211,46 @@ top: 45%;
 }
 
 #show-project-name  {
-position:absolute; top: 63%; left:46%; z-index: 3;
+position:absolute; top: 63%; left:46%; z-index: 80;
 font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
 margin-top: 10px; 
 margin-left: -30px;
 color:rgb(0, 172, 199);
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+
+#show-total-price  {
+    position:absolute; top: 555px; left:50%; z-index: 80;
+    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+    margin-top: 10px; 
+    margin-left: -30px;
+    color:rgb(0, 172, 199);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    #p-total-label{
+        position:absolute; top: 530px; left:45%; z-index: 80;
+        font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+        margin-top: 10px; 
+        margin-left: -30px;
+        color:rgb(242, 250, 255);
+    }
+
+
 #show-project-description  {
-    position:absolute; top: 800px; left:43%; z-index: 52;
+    position:absolute; top: 443px; left:43%; z-index: 80;
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 20px;
     color:rgb(0, 172, 199);
     overflow-y: scroll; height: 70px; 
-    overflow-x: scroll; width: 200px; 
-   
+    overflow-x: scroll; width: 175px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 
 
 #p-des-label {
-    position: absolute; top: 751px;  right: 44%; z-index: 6;
+    position: absolute; top: 420px;  right: 43%; z-index: 80;
         font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 15.4px;
         color:rgb(242, 250, 255);
     }
@@ -211,9 +264,18 @@ color:rgb(0, 172, 199);
     font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 500; line-height: 20.4px;
     list-style-type: none;
     color:rgb(0, 172, 199);
-
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+   
+    
 }
 
+
+#projects-container {    
+    position:absolute; right:-210px;  top: 61.5%; z-index: 50;
+    overflow-y: scroll; width: 20.5vw; height: 20vw;
+    overflow-x: hidden;  
+
+}
 
 
 
@@ -236,18 +298,28 @@ color:rgb(0, 172, 199);
 
 
 #ingredients-container {  
-    position:absolute; left:80%;  top: 65%; z-index: 50;
-    color: rgb(0, 217, 255);
-    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+    position:absolute; left:78%;  top: 61.5%; z-index: 50;
+    color:rgb(0, 172, 199);
+    font-family: "futura", Trebuchet MS, Arial, sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
     font-weight: lighter;
     line-height: 10pt; 
     line-height: 15pt;
     list-style-type: none;
-
+    overflow-x: scroll; width: 45vw; height: 35vw;
+    overflow-x: hidden; 
+  
 }
+
+
+
+
+
 
 
 #ingredients-container img{  
     position:relative; width:30%;
+    border-radius: 20px;
+    border: 10px solid #ffffff;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
 
 }
