@@ -37,29 +37,26 @@ projectService.getProjects()
 function showProject(){
     event.preventDefault()
     projectService.showProject()
-
 }
 
 
 
 function submitIngredient(){
- 
     ingredientService.createIngredient()
-
 }
 
 function submitProject(event){
-
     projectService.createProject()
 }
 
 function updateProject(event){
-
 projectService.backEndedit()
-
 }
 
 
+function updateIngredient(event){
+    ingredientService.backEndedit()
+    }
 
 
 

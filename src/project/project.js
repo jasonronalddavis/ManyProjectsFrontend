@@ -4,7 +4,7 @@
 class Project 
 {
 
-
+    
 
 
 static projectContainer = document.getElementById("projects-container")
@@ -17,6 +17,11 @@ static ingredientBox = document.querySelector(`#i-box`);
 static ingredient_ids = []
 static category_ids =  []
 static showProject = document.getElementById("show-project")
+static logo = document.getElementById("ptek")
+
+
+
+
 
 
 constructor({id, name, description, total_price, category_ids, ingredient_ids}){
@@ -34,14 +39,36 @@ this.element.addEventListener('click', this.appendEdit)
 this.element.addEventListener('click', this.appendShow)
 Project.all.push(this)
 
+
+}
+
+
+
+hideI(){
+    const IselectA = document.querySelector('#ingredient-selectA');
+    const IselectB = document.querySelector('#ingredient-selectB');
+    const IselectC = document.querySelector('#ingredient-selectC');
+    Project.IselectA.style.display = 'none';
+    Project.IselectB.style.display = 'none';
+    Project.IselectC.style.display = 'none';
 }
 
 
 
 
+showI(){
+    const IselectA = document.querySelector('#ingredient-selectA');
+    const IselectB = document.querySelector('#ingredient-selectB');
+    const IselectC = document.querySelector('#ingredient-selectC');
+    Project.IselectA.style.display = 'block';
+    Project.IselectB.style.display = 'block';
+    Project.IselectC.style.display = 'block';
+}
+
 //HTML RENDER
 
 projectHTML(){
+    
     this.element.innerHTML += `
     
     <div>
@@ -53,7 +80,6 @@ projectHTML(){
     `
     return this.element
 
-     Project.projectContainer.scrollLeft(300);
 }
 
 
@@ -153,6 +179,9 @@ static renderForm(){
 
 
  static renderEditForm(){
+
+ 
+
 Project.editProjectForm.innerHTML += `
 <h2 id="edit-project-title"> Edit Project </h2> 
     `
@@ -166,9 +195,6 @@ Project.editProjectForm.innerHTML += `
    `
 
    }
-
-
-
 
    static renderShow(){
      Project.showProject.innerHTML += `
@@ -189,7 +215,9 @@ Project.editProjectForm.innerHTML += `
 
 
 appendEdit = () => { 
-    if (event.target.innerText === 'Edit'){
+
+    if (event.target.innerText === 'Edit' ){
+        
        const element = document.querySelector(`#${this.element.id}`)
        const epf = document.querySelector(`#edit-project-form`);
        document.getElementById('edit-project-name'). placeholder = `${this.name}`
@@ -200,21 +228,23 @@ appendEdit = () => {
       Project.editProjectForm.dataset.id = this.id
     }   
     if (Project.editProjectForm.style.display === 'none'){
+     
         Project.editProjectForm.style.display = "block";
     }else{
         Project.editProjectForm.style.display = 'none';
     } 
-    }
+    } 
+ 
 
 
 
     appendShow = () => { 
-
+        
 document.querySelector('#show-project').innerHTML = `<div id="sho-cont"></div>`
 const shoCont = document.querySelector('#sho-cont')
-
-        if (event.target.innerText === 'Show'){
-            
+        if (event.target.innerText === 'Show' ){ 
+            projectService.renderShow(this.id);  
+            Project.logo.style.display = "block";
             shoCont.innerHTML = `
             <h1 id='p-name-label'> Project Name: </h1>
             <h1 id='p-total-label'> Total Estimated Cost: </h1>
@@ -225,28 +255,23 @@ const shoCont = document.querySelector('#sho-cont')
             <img src="assets/images/Project_box.png" id="show-box">
             <h3 id='p-cat-label'> Project Categories: </h3>
             <h3 id='p-ing-label'> Project Ingredients: </h3>
-
             `
-            Project.showProject.dataset.id = this.id
-         if (Project.showProject.style.display === 'none'){
-             Project.showProject.style.display = "block";
-             projectService.renderShow(this.id); 
-          
- 
-         }else{
-             Project.showProject.style.display = 'none';
-         } 
-      
-
        
-    }
-    shoCont.innerHTML += `<div id="sho-proj-cat"></div>`
-    shoCont.innerHTML += `<div id="sho-proj-ing"></div>`
-  
-    }
+            Project.showProject.dataset.id = this.id
+            if (Project.showProject.style.display === 'none'){
+                Project.showProject.style.display = "block";
+                projectService.renderShow(this.id); 
+                Project.editProjectForm.style.display = 'none';
+                Ingredient.showIngredient.style.display = "none";
 
-
-
+            }else{
+                Project.showProject.style.display = 'none';
+            } 
+          
+       }
+       shoCont.innerHTML += `<div id="sho-proj-cat"></div>`
+       shoCont.innerHTML += `<div id="sho-proj-ing"></div>`
+       }
 
 appendDelete = () => { 
     if (event.target.innerText === 'Delete'){

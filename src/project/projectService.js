@@ -38,8 +38,6 @@ Ingredient.renderForm()
           Project.pushIngredient
         }
       })
-
-
     const ingredient_Ids = []
     const ingr = document.querySelectorAll('option:checked');
      const ingredient1 = ingr[0].value
@@ -61,7 +59,6 @@ Ingredient.renderForm()
        // category3: document.querySelector('input#cat-3[value]').value,
         ingredient_ids: ingredient_Ids
     }
-
 
 const configObj = {
 method: 'POST',
@@ -138,13 +135,9 @@ console.log(project)
 
 
 renderShow(id){
-  
-
-
 const project = {
     id: document.getElementById('show-project').dataset.id,
 }
-
 
 const configObj = {
     method: 'GET',
@@ -153,8 +146,6 @@ const configObj = {
         },
     project: JSON.stringify(project)
     }
-
-
 
         fetch(`${this.endpoint}/projects/${id}`,configObj)     
         .then(resp => resp.json() )   

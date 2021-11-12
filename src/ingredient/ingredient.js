@@ -4,6 +4,8 @@ class Ingredient  {
 static all = []
 static ingredientContainer = document.getElementById("ingredients-container")
 static ingredientForm = document.getElementById('ingredient-form-container')
+static showIngredient = document.getElementById("show-ingredient")
+static editIngredientForm = document.getElementById('edit-ingredient-form')
 
 
 
@@ -22,6 +24,9 @@ constructor({id, name, description, image_url, price, url, category_ids }){
     this.element.dataset.id = this.id
     this.element.id = `ingredient-${this.id}`
     this.element.addEventListener('click', this.appendDelete) 
+    this.element.addEventListener('click', this.appendShow)
+    this.element.addEventListener('click', this.appendEdit)
+
     Ingredient.all.push(this)
 //debugger;
 
@@ -41,6 +46,8 @@ ingredientHTML(){
     <div>
     <img src=${this.image_url} id=i_image_url>
     <h1>${this.name}</h1>
+    <button id=${this.id}class= btn-primary> ShowI</button>
+    <button id=${this.id} class= btn-primary>IEdit</button>
     <button id=${this.id} >Delete</button>
     </div>
     `
@@ -94,6 +101,81 @@ static renderForm(){
 
 
 
+   static renderShow(){
+    Ingredient.showIngredient.innerHTML += `
+    <img src="assets/images/ibox.png" id="show-i-box">
+      `
+      }
+
+
+
+
+      appendShow = () => { 
+        document.querySelector('#show-ingredient').innerHTML = `<div id="sho-i-cont"></div>`
+        const shoCont = document.querySelector('#sho-i-cont')
+                if (event.target.innerText === 'ShowI'){    
+                    shoCont.innerHTML = `
+                    <h1 id='i-name-label'> Ingredient Name: </h1>
+                    <h1 id='i-price-label'> Price: </h1>
+                   <h1 id='show-price'> ${this.price} </h1>
+                    <h1 id='show-ingredient-name'> ${this.name} </h1>
+                    <h1 id='i-des-label'> Ingredient Description: </h1>
+                    <p id='show-ingredient-description'> ${this.description} </p>
+                    <img src="assets/images/ibox.png" id="show-i-box">
+                    <h3 id='i-cat-label'> Ingredient Categories: </h3>
+                    <h3 id='i-proj-label'> Ingredient Projects: </h3>
+        
+                    `
+                    Ingredient.showIngredient.dataset.id = this.id
+                 if (Ingredient.showIngredient.style.display === 'none'){
+                     Ingredient.showIngredient.style.display = "block";
+                  Project.showProject.style.display = "none";
+                  Project.editProjectForm.style.display = 'none';
+
+                     ingredientService.renderShow(this.id);     
+                 }else{
+                     Ingredient.showIngredient.style.display = 'none';
+                 }    
+            }
+            shoCont.innerHTML += `<div id="sho-ing-cat"></div>`
+            shoCont.innerHTML += `<div id="sho-ing-proj"></div>` 
+            }
+        
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 appendDelete = () => { 
     if (event.target.innerText === 'Delete'){
         Ingredient.deleteIngredient(this.id)
@@ -102,6 +184,9 @@ appendDelete = () => {
         ingredientService.backEndDelete(this .id)
     }
 }
+
+
+
 
 static deleteIngredient = (id) => {
     let ingredientId = parseInt(event.target.id);  
