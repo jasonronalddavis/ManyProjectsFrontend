@@ -37,11 +37,7 @@ constructor({id, name, description, image_url, price, url, category_ids }){
 
 
 ingredientHTML(){
-
     const img = document.createElement('img')
-
-
-
     this.element.innerHTML += `
     <div>
     <img src=${this.image_url} id=i_image_url>
@@ -57,17 +53,10 @@ ingredientHTML(){
 
 
 
-
-
-
-
-
-
    slapOnDom(){
     console.log()
     Ingredient.ingredientContainer.append(this.ingredientHTML())
     }
-
 
 
 
@@ -141,38 +130,6 @@ static renderForm(){
             shoCont.innerHTML += `<div id="sho-ing-proj"></div>` 
             }
         
-
-
-
-
-
-
-
-         
-
-
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

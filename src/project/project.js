@@ -19,7 +19,7 @@ static category_ids =  []
 static showProject = document.getElementById("show-project")
 static logo = document.getElementById("ptek")
 
-
+static testForm = document.querySelector("#user-comments-form")
 
 
 
@@ -83,11 +83,21 @@ projectHTML(){
 }
 
 
+
+
+
+
    slapOnDom(){
     console.log()
     Project.projectContainer.append(this.projectHTML())
     }
     
+
+
+
+
+
+
 
 
 
@@ -180,8 +190,6 @@ static renderForm(){
 
  static renderEditForm(){
 
- 
-
 Project.editProjectForm.innerHTML += `
 <h2 id="edit-project-title"> Edit Project </h2> 
     `
@@ -193,8 +201,25 @@ Project.editProjectForm.innerHTML += `
     <input type="submit" id="create-edit">
 <form>
    `
-
    }
+
+
+
+
+static submitTest = ()=> {
+    const body = document.querySelector('#user-comments-div')
+    const input = document.querySelector(`#user-comments-input`)
+    body.innerHTML += `
+  <h1>  ${input.value} </h1>
+ 
+    `
+    debugger;
+}
+
+
+
+
+
 
    static renderShow(){
      Project.showProject.innerHTML += `
