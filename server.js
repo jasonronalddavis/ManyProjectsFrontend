@@ -1,11 +1,20 @@
 const express = require('express');
-const favicon = require('express-favicon');
-const path = require('path');
-const port = process.env.PORT || 8080;
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+
 const app = express();
-app.use(favicon(__dirname + '/public/favicon.png'));
-// the __dirname is the current directory from where the script is running
-app.use(express.static(__dirname));// send the user to index html page inspite of the url
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
-});app.listen(port);
+const config = require('./webpack.config.js');
+const compiler = webpack(config);
+
+// Tell express to use the webpack-dev-middleware and use the webpack.config.js
+// configuration file as a base.
+app.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+  })
+);
+
+// Serve the files on port 3000.
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!\n');
+});
