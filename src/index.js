@@ -10,7 +10,7 @@
 // start coding from src files & not index.js to prevent confusion
 
 // 
-
+import "./style.css"
 
 const base_url = "http://localhost:3000/api/v1"
 const ingredientService = new IngredientService(base_url)
